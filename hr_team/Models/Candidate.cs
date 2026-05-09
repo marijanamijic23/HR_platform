@@ -11,10 +11,10 @@
             this.email = email;
         }
 
-        private int id { get; set; }
-        private string full_name { get; set; }
-        private DateTime date_of_birth { get; set; }
-        private string contact_number { get; set; }
-        private string email { get; set; }
+        public int id { get; set; }
+        public string full_name { get; set; }
+        public DateTime date_of_birth { get; set; }
+        public string contact_number { get; set; }
+        public string email { get; set; }
     }
 }
