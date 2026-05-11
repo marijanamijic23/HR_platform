@@ -2,6 +2,8 @@
 using hr_team.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using System.Net;
 
 namespace hr_team.Controllers
 {
@@ -47,16 +49,16 @@ namespace hr_team.Controllers
 
         [HttpPost]
         [Route("UpdateJobCandidateWithSkills")]
-        public void UpdateJobCandidateWithSkills(int candidateId, Skill skill)
+        public void UpdateJobCandidateWithSkills(int skillId,string name)
         {
-            _candidateService.UpdateJobCandidateWithSkills(candidateId, skill);
+            _candidateService.UpdateJobCandidateWithSkills(skillId,name);
         }
 
         [HttpPost]
         [Route("RemoveSkillsFromJobCandidate")]
-        public void RemoveSkillsFromJobCandidate(int candidateId, Skill skill)
+        public void RemoveSkillsFromJobCandidate(int candidateId)
         {
-            _candidateService.RemoveSkillsFromJobCandidate(candidateId, skill);
+            _candidateService.RemoveSkillsFromJobCandidate(candidateId);
         }
 
         [HttpPost]
@@ -64,6 +66,21 @@ namespace hr_team.Controllers
         public void AddSkill(Skill skill)
         {
             _skillService.Add_skill(skill);
+        }
+
+        [HttpGet]
+        [Route("SeeAllSkills")]
+        public List<Skill> SeeAllSkills()
+        {
+            return _skillService.SeeAllSkills();
+        }
+
+        [HttpGet]
+        [Route("GetAllCandidates")]
+        public List<Candidate> GetAllCandidates()
+        {
+            return _candidateService.GetAllCandidates();
+
         }
     }
 }

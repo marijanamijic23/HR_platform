@@ -8,7 +8,8 @@ namespace hr_team.Repository
       public void RemoveCandidate(int candidateId);
       public List<Candidate> SearchCandidatesByName(string name);
       public List<Candidate> SearchCandidateByGivenSkill(string skill);
-      public void UpdateJobCandidateWithSkills(int candidateId, Skill skill);
-      public void RemoveSkillsFromJobCandidate(int candidateId, Skill skill);
+        public void UpdateJobCandidateWithSkills(int skillId, string name);
+      public void RemoveSkillsFromJobCandidate(int candidateId);
+      public List<Candidate> GetAllCandidates();
     }
 }

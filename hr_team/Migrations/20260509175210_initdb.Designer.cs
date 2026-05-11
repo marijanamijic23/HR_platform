@@ -13,7 +13,7 @@ namespace hr_team.Migrations
 {
     [DbContext(typeof(HrContext))]
     [Migration("20260509175210_initdb")]
-    partial class initdb
+    partial class InitDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

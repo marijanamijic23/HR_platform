@@ -1,4 +1,6 @@
-﻿namespace hr_team.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace hr_team.Models
 {
     public class Skill
     {
@@ -8,6 +10,7 @@
             this.name = name;
         }
 
+        [Key]
         public int id { get; set; }
 
         public string name { get; set; }
