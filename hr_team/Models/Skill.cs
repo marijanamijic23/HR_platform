@@ -4,6 +4,11 @@ namespace hr_team.Models
 {
     public class Skill
     {
+        public Skill()
+        {
+            id = 0;
+            name = string.Empty;
+        }
         public Skill(int id, string name)
         {
             this.id = id;

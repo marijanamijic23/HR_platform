@@ -4,17 +4,26 @@ namespace hr_team.Models
 {
     public class Candidate
     {
+
+        public Candidate()
+        {
+            id = 0;
+            full_name = string.Empty;
+            date_of_birth = DateTime.Now;
+            contact_number = string.Empty;
+            email = string.Empty;
+        }
         public Candidate(int id, string full_name, DateTime date_of_birth, string contact_number, string email)
         {
-            this.Id = id;
+            this.id = id;
             this.full_name = full_name;
             this.date_of_birth = date_of_birth;
             this.contact_number = contact_number;
             this.email = email;
         }
 
-        [Key]
-        public int Id { get; set; }
+        
+        public int id { get; set; }
         public string full_name { get; set; }
         public DateTime date_of_birth { get; set; }
         public string contact_number { get; set; }

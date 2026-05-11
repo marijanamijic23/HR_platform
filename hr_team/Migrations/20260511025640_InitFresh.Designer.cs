@@ -12,8 +12,8 @@ using hr_team.Data;
 namespace hr_team.Migrations
 {
     [DbContext(typeof(HrContext))]
-    [Migration("20260509175210_initdb")]
-    partial class InitDb
+    [Migration("20260511025640_InitFresh")]
+    partial class InitFresh
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,7 +50,33 @@ namespace hr_team.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Candidates");
+                    b.ToTable("Candidates", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            contact_number = "1234567890",
+                            date_of_birth = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            email = "johndoe23@gmail.com",
+                            full_name = "John Doe"
+                        },
+                        new
+                        {
+                            id = 2,
+                            contact_number = "0987654321",
+                            date_of_birth = new DateTime(1992, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            email = "janesmith@gmail.com",
+                            full_name = "Jane Smith"
+                        },
+                        new
+                        {
+                            id = 3,
+                            contact_number = "5551234567",
+                            date_of_birth = new DateTime(1988, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            email = "michaeljohnson@gmail.com",
+                            full_name = "Michael Johnson"
+                        });
                 });
 
             modelBuilder.Entity("hr_team.Models.CandidateSkill", b =>
@@ -73,7 +99,7 @@ namespace hr_team.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("CandidateSkills");
+                    b.ToTable("CandidateSkills", (string)null);
                 });
 
             modelBuilder.Entity("hr_team.Models.Skill", b =>
@@ -90,7 +116,24 @@ namespace hr_team.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skill", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            name = "C#"
+                        },
+                        new
+                        {
+                            id = 2,
+                            name = "ASP.NET Core"
+                        },
+                        new
+                        {
+                            id = 3,
+                            name = "Entity Framework Core"
+                        });
                 });
 
             modelBuilder.Entity("hr_team.Models.CandidateSkill", b =>

@@ -1,3 +1,4 @@
+using hr_team;
 using hr_team.Data;
 using hr_team.Repository;
 using hr_team.Services;
@@ -12,8 +13,10 @@ builder.Services.AddDbContext<HrContext>(
     throw new InvalidOperationException("Connection string not found."))
 );
 
-builder.Services.AddScoped<ICandidateService, CandidateService>();
-builder.Services.AddScoped<ISkillService, SkillService>();
+builder.Services.AddScoped<ICandidateChangeValueRepository, CandidateChangeValuesService>();
+builder.Services.AddScoped<ICandidateGetValuesRepository, CandidateGetValuesServices>();
+builder.Services.AddScoped<ISkillRepository, SkillService>();
+builder.Services.AddScoped<ICandidateSkillRepository, CandidateSkillService>();
 builder.Services.AddScoped<SkillService>();
 
 builder.Services.AddControllers();
@@ -35,5 +38,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MigrateDatabase();
 
 app.Run();
