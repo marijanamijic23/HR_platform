@@ -2,7 +2,7 @@
 
 namespace hr_team.Repository
 {
-    public interface ICandidateGetValuesRepository
+    public interface ICandidateGetValuesService
     {
         public List<Candidate> SearchCandidatesByName(string name);
         public List<Candidate> SearchCandidateByGivenSkill(string skill);

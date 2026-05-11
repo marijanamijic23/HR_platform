@@ -13,24 +13,24 @@ namespace hr_team.Controllers
     [ApiController]
     public class HrController : ControllerBase
     {
-        ICandidateChangeValueRepository _candidateChangeValueRepository;
-        ICandidateGetValuesRepository _candidateGetValuesRepository;
-        ISkillRepository _skillRepository;
-        ICandidateSkillRepository _candidateSkillRepository;
-        public HrController(ICandidateChangeValueRepository change, ICandidateGetValuesRepository get, ISkillRepository skill, ICandidateSkillRepository candidateSkill)
+        ICandidateChangeValueService _candidateChangeValueService;
+        ICandidateGetValuesService _candidateGetValuesService;
+        ISkillService _skillService;
+        ICandidateSkillService _candidateSkillService;
+        public HrController(ICandidateChangeValueService change, ICandidateGetValuesService get, ISkillService skill, ICandidateSkillService candidateSkill)
         {
-            _candidateChangeValueRepository = change;
-            _candidateGetValuesRepository = get;
-            _skillRepository = skill;
-            _candidateSkillRepository = candidateSkill;
+            _candidateChangeValueService = change;
+            _candidateGetValuesService = get;
+            _skillService = skill;
+            _candidateSkillService = candidateSkill;
         }
 
         [HttpPost]
         [Route("AddCandidate")]
         public string AddJobCandidate(Candidate candidate)
         {
-            _candidateChangeValueRepository.AddJobCandidate(candidate);
-            if (_candidateChangeValueRepository.GetStatus() == 1)
+            _candidateChangeValueService.AddJobCandidate(candidate);
+            if (_candidateChangeValueService.GetStatus() == 1)
             {
                 this.HttpContext.Response.StatusCode = 400;
                 return "Candidate with this email already exists!";
@@ -42,9 +42,9 @@ namespace hr_team.Controllers
         [Route("RemoveCandidate")]
         public string RemoveCandidate(int candidateId)
         {
-            _candidateChangeValueRepository.RemoveCandidate(candidateId);
+            _candidateChangeValueService.RemoveCandidate(candidateId);
 
-            if (_candidateChangeValueRepository.GetStatus() == 1)
+            if (_candidateChangeValueService.GetStatus() == 1)
             {
                 this.HttpContext.Response.StatusCode = 404;
                 return "Candidate with this id doesn't exist!";
@@ -57,8 +57,8 @@ namespace hr_team.Controllers
         [Route("SearchCandidatesByName")]
         public List<Candidate> SearchCandidatesByName(string name)
         {
-            var search = _candidateGetValuesRepository.SearchCandidatesByName(name);
-            if (_candidateGetValuesRepository.getStatus() == 1)
+            var search = _candidateGetValuesService.SearchCandidatesByName(name);
+            if (_candidateGetValuesService.getStatus() == 1)
             {
                 this.HttpContext.Response.StatusCode = 404;
                 return new List<Candidate> { new Candidate { id = 0, full_name = "No candidate found with the given name.", date_of_birth = DateTime.MinValue, contact_number = "", email = "" } };
@@ -71,8 +71,8 @@ namespace hr_team.Controllers
         [Route("SearchCandidateByGivenSkill")]
         public List<Candidate> SearchCandidateByGivenSkill(string skill)
         {
-            var search = _candidateGetValuesRepository.SearchCandidateByGivenSkill(skill);
-            if (_candidateGetValuesRepository.getStatus() == 1)
+            var search = _candidateGetValuesService.SearchCandidateByGivenSkill(skill);
+            if (_candidateGetValuesService.getStatus() == 1)
             {
                 this.HttpContext.Response.StatusCode = 404;
                 return new List<Candidate> { new Candidate { id = 0, full_name = "No candidate found with the given skill.", date_of_birth = DateTime.MinValue, contact_number = "", email = "" } };
@@ -84,8 +84,8 @@ namespace hr_team.Controllers
         [Route("UpdateJobCandidateWithSkills")]
         public string UpdateJobCandidateWithSkills(int candidateId, string name)
         {
-            _candidateChangeValueRepository.UpdateJobCandidateWithSkills(candidateId, name);
-            if (_candidateChangeValueRepository.GetStatus() == 1)
+            _candidateChangeValueService.UpdateJobCandidateWithSkills(candidateId, name);
+            if (_candidateChangeValueService.GetStatus() == 1)
             {
                 this.HttpContext.Response.StatusCode = 404;
                 return "Candidate with this id doesn't exist!";
@@ -98,8 +98,8 @@ namespace hr_team.Controllers
         [Route("RemoveSkillsFromJobCandidate")]
         public string RemoveSkillsFromJobCandidate(int candidateId)
         {
-            _candidateChangeValueRepository.RemoveSkillsFromJobCandidate(candidateId);
-            if (_candidateChangeValueRepository.GetStatus() == 1)
+            _candidateChangeValueService.RemoveSkillsFromJobCandidate(candidateId);
+            if (_candidateChangeValueService.GetStatus() == 1)
             {
                 this.HttpContext.Response.StatusCode = 404;
                 return "Candidate with this id doesn't exist!";
@@ -111,14 +111,14 @@ namespace hr_team.Controllers
         [Route("AddSkill")]
         public string AddSkill(Skill skill)
         {
-            _skillRepository.Add_skill(skill);
-            if (_skillRepository.getStatus() == 1)
+            _skillService.AddSkill(skill);
+            if (_skillService.getStatus() == 1)
             {
                 this.HttpContext.Response.StatusCode = 400;
                 return "Skill with this name already exists!";
             }
 
-            if (_skillRepository.getStatus() == 2)
+            if (_skillService.getStatus() == 2)
             {
                 this.HttpContext.Response.StatusCode = 400;
                 return "This element already exists!";
@@ -131,14 +131,14 @@ namespace hr_team.Controllers
         [Route("SeeAllSkills")]
         public List<Skill> SeeAllSkills()
         {
-            return _skillRepository.SeeAllSkills();
+            return _skillService.SeeAllSkills();
         }
 
         [HttpGet]
         [Route("GetAllCandidates")]
         public List<Candidate> GetAllCandidates()
         {
-            return _candidateGetValuesRepository.GetAllCandidates();
+            return _candidateGetValuesService.GetAllCandidates();
 
         }
 
@@ -146,7 +146,7 @@ namespace hr_team.Controllers
         [Route("ShowAllElements")]
         public List<CandidateSkill> ShowAllElements()
         {
-            return _candidateSkillRepository.ShowAllElements();
+            return _candidateSkillService.ShowAllElements();
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace hr_team.Repository
 {
-    public interface ICandidateSkillRepository
+    public interface ICandidateSkillService
     {
         List<CandidateSkill> ShowAllElements();
 

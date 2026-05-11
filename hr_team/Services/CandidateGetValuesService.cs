@@ -4,11 +4,11 @@ using hr_team.Repository;
 
 namespace hr_team.Services
 {
-    public class CandidateGetValuesServices : ICandidateGetValuesRepository
+    public class CandidateGetValuesService : ICandidateGetValuesService
     {
         HrContext _context;
         public static int status = 0;
-        public CandidateGetValuesServices(HrContext context)
+        public CandidateGetValuesService(HrContext context)
         {
             _context = context;
         }

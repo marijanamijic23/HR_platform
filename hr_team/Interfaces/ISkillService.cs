@@ -2,9 +2,9 @@
 
 namespace hr_team.Repository
 {
-    public interface ISkillRepository
+    public interface ISkillService
     {
-        public void Add_skill(Skill skill);
+        public void AddSkill(Skill skill);
         public List<Skill> SeeAllSkills();
         public int getStatus();
     }

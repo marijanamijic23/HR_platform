@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace hr_team.Services
 {
-    public class CandidateSkillService : ICandidateSkillRepository
+    public class CandidateSkillService : ICandidateSkillService
     {
         HrContext _context;
         public CandidateSkillService(HrContext context)

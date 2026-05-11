@@ -13,10 +13,10 @@ builder.Services.AddDbContext<HrContext>(
     throw new InvalidOperationException("Connection string not found."))
 );
 
-builder.Services.AddScoped<ICandidateChangeValueRepository, CandidateChangeValuesService>();
-builder.Services.AddScoped<ICandidateGetValuesRepository, CandidateGetValuesServices>();
-builder.Services.AddScoped<ISkillRepository, SkillService>();
-builder.Services.AddScoped<ICandidateSkillRepository, CandidateSkillService>();
+builder.Services.AddScoped<ICandidateChangeValueService, CandidateChangeValuesService>();
+builder.Services.AddScoped<ICandidateGetValuesService, CandidateGetValuesService>();
+builder.Services.AddScoped<ISkillService, SkillService>();
+builder.Services.AddScoped<ICandidateSkillService, CandidateSkillService>();
 builder.Services.AddScoped<SkillService>();
 
 builder.Services.AddControllers();

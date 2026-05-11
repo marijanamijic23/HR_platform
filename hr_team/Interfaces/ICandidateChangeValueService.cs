@@ -2,7 +2,7 @@
 
 namespace hr_team.Repository
 {
-    public interface ICandidateChangeValueRepository
+    public interface ICandidateChangeValueService
     {
         public void AddJobCandidate(Candidate candidate);
         public void RemoveCandidate(int candidateId);

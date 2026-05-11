@@ -4,7 +4,7 @@ using hr_team.Repository;
 
 namespace hr_team.Services
 {
-    public class SkillService : ISkillRepository
+    public class SkillService : ISkillService
     {
         HrContext _context;
         public static int status = 0;
@@ -14,7 +14,7 @@ namespace hr_team.Services
             _context = context;
         }
 
-        public void Add_skill(Skill skill)
+        public void AddSkill(Skill skill)
         {
            status = 0;
             var skill_name = _context.Skills.Where(s => s.name == skill.name).FirstOrDefault();

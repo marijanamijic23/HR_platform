@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="hr_team.Tests/hr_team.Tests.csproj" />
   <Project Path="hr_team/hr_team.csproj" />
 </Solution>

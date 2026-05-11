@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace hr_team.Services
 {
-    public class CandidateChangeValuesService : ICandidateChangeValueRepository
+    public class CandidateChangeValuesService : ICandidateChangeValueService
     {
         HrContext _context;
         public static int status = 0;
