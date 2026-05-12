@@ -14,7 +14,7 @@ namespace hr_team.Configuration
                 new Skill
                 {
                     id = 1,
-                    name = "C#",
+                    name = "Java",
                 },
                 new Skill
                 {
